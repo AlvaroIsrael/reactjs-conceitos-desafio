@@ -14,13 +14,36 @@ function App() {
 
   async function handleAddRepository() {
     /*This is just a Mock, a form does not exist yet.*/
-    const dados = {
-      id: '123',
-      url: 'https://github.com/AlvaroIsrael',
-      title: 'Desafio ReactJS',
-      techs: ['React', 'Node.js', 'React Native'],
-    };
-    const response = await api.post('/repositories', dados);
+    const repos = [
+      {
+        url: 'https://github.com/Shofnip/front-end-reactjs',
+        title: 'Front-end ReactJS',
+        techs: ['ReactJS'],
+      },
+      {
+        url: 'https://github.com/Shofnip/back-end-Nodejs',
+        title: 'Back-end NodeJS',
+        techs: ['NodeJS'],
+      },
+      {
+        url: 'https://github.com/AlvaroIsrael/SQLiteForExcel',
+        title: 'Mobile React Native',
+        techs: ['SQLiteForExcel'],
+      },
+      {
+        url: 'https://github.com/AlvaroIsrael/vscode-one-monokai',
+        title: 'VsCode is aewsome',
+        techs: ['VSCode'],
+      },
+      {
+        url: 'https://github.com/AlvaroIsrael',
+        title: 'ReactJS Challenge',
+        techs: ['React', 'Node.js', 'React Native'],
+      }];
+
+    const repository = repos[Math.floor(Math.random() * repos.length)];
+
+    const response = await api.post('/repositories', {...repository});
     setRepositories([...repositories, response.data]);
   }
 
